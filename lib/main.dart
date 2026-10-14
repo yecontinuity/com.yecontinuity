@@ -1,29 +1,35 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:yecontinuity/config/providers/bottom_navigation_provider.dart';
+import 'package:yecontinuity/ui/core/ui/widgets/logo_avatar.dart';
 import 'package:yecontinuity/ui/core/themes/theme.dart';
+import 'package:yecontinuity/ui/feature/chats/chats_screen.dart';
+import 'package:yecontinuity/routing/router.dart';
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends ConsumerWidget {
   const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
+  Widget build(BuildContext context, WidgetRef ref) {
+    final router = ref.watch(routerProvider);
+
+    return MaterialApp.router(
+      localizationsDelegates: GlobalMaterialLocalizations.delegates,
       title: 'YEContinuity',
       theme: AppTheme.lightTheme,
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: MainScreen(),
-      ),
+      routerConfig: router,
     );
   }
 }
 
 class MainScreen extends ConsumerWidget {
+  MainScreen({super.key});
+
   int currentIndex = 0;
   final List<Widget> _pages = [
     Scaffold(
@@ -32,12 +38,7 @@ class MainScreen extends ConsumerWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text('Home'),
-            CircleAvatar(
-              child: Image.asset(
-                'assets/images/logo.png',
-              ),
-              backgroundColor: AppTheme.lightTheme.primaryColor,
-            ),
+            LogoAvatar(),
           ],
         ),
       ),
@@ -48,51 +49,24 @@ class MainScreen extends ConsumerWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text('Add'),
-            CircleAvatar(
-              child: Image.asset(
-                'assets/images/logo.png',
-              ),
-              backgroundColor: AppTheme.lightTheme.primaryColor,
-            ),
+            LogoAvatar(),
           ],
         ),
       ),
     ),
-    Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text('Chats'),
-            CircleAvatar(
-              child: Image.asset(
-                'assets/images/logo.png',
-              ),
-              backgroundColor: AppTheme.lightTheme.primaryColor,
-            ),
-          ],
-        ),
-      ),
-    ),
+    ChatsScreen(),
     Scaffold(
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text('Profile'),
-            CircleAvatar(
-              child: Image.asset(
-                'assets/images/logo.png',
-              ),
-              backgroundColor: AppTheme.lightTheme.primaryColor,
-            ),
+            LogoAvatar(),
           ],
         ),
       ),
     ),
   ];
-
-  MainScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
