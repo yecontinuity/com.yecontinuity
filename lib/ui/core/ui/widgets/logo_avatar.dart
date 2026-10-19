@@ -2,11 +2,17 @@ import 'package:material_ui/material_ui.dart';
 import 'package:yecontinuity/ui/core/themes/theme.dart';
 
 class LogoAvatar extends StatelessWidget {
-  const new({super.key});
+  final double size;
+  final double radius;
+
+  const new({
+    super.key,
+    this.size = 90,
+    this.radius = 90,
+  });
 
   @override
   Widget build(BuildContext context) {
-    final double size = 90;
     return SizedBox(
       height: size,
       width: size,
@@ -17,7 +23,7 @@ class LogoAvatar extends StatelessWidget {
           width: size,
         ),
         backgroundColor: AppTheme.lightTheme.primaryColor,
-        radius: 90,
+        radius: radius,
       ),
     );
   }
