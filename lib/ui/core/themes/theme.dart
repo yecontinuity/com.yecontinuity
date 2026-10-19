@@ -19,7 +19,6 @@ abstract final class AppTheme {
     ),
   );
 
-  // ── Tipografia (cores secundárias vêm do scheme, não de greys fixos) ──
   static TextTheme _textTheme(ColorScheme s) => TextTheme(
     headlineLarge: const TextStyle(fontSize: 32, fontWeight: FontWeight.w500),
     headlineSmall: const TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
@@ -71,6 +70,7 @@ abstract final class AppTheme {
         elevation: 0,
         centerTitle: false,
       ),
+
       cardTheme: CardThemeData(
         color: s.surfaceContainerLow,
         elevation: 0,
@@ -136,24 +136,50 @@ abstract final class AppTheme {
         side: BorderSide.none,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
       ),
-      inputDecorationTheme: InputDecorationTheme(
+      // Input Decoration Theme
+      inputDecorationTheme: InputDecorationThemeData(
         filled: true,
         fillColor: s.surfaceContainerHigh,
-        hintStyle: TextStyle(
-          color: s.onSurfaceVariant,
-          fontSize: 18,
-          fontWeight: FontWeight.w400,
-        ),
         contentPadding: const EdgeInsets.symmetric(
           horizontal: 16,
-          vertical: 16,
+          vertical: 12,
         ),
-        border: border(Colors.transparent, 0),
-        enabledBorder: border(Colors.transparent, 0),
-        focusedBorder: border(s.primary, 2),
-        errorBorder: border(s.error),
-        focusedErrorBorder: border(s.error, 2),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12.0),
+          borderSide: BorderSide(color: s.primary, width: 1.0),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12.0),
+          borderSide: BorderSide(color: s.onPrimary, width: 1.0),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12.0),
+          borderSide: BorderSide(color: s.primary, width: 2.0),
+        ),
+        errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12.0),
+          borderSide: BorderSide(color: s.error, width: 1.0),
+        ),
       ),
+
+      // inputDecorationTheme: InputDecorationTheme(
+      //   filled: true,
+      //   fillColor: s.surfaceContainerHigh,
+      //   hintStyle: TextStyle(
+      //     color: s.onSurfaceVariant,
+      //     fontSize: 18,
+      //     fontWeight: FontWeight.w400,
+      //   ),
+      //   contentPadding: const EdgeInsets.symmetric(
+      //     horizontal: 16,
+      //     vertical: 16,
+      //   ),
+      //   border: border(Colors.transparent, 0),
+      //   enabledBorder: border(Colors.transparent, 0),
+      //   focusedBorder: border(s.primary, 2),
+      //   errorBorder: border(s.error),
+      //   focusedErrorBorder: border(s.error, 2),
+      // ),
 
       // ── 10% acento: ações principais ──
       filledButtonTheme: FilledButtonThemeData(
