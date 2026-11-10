@@ -5,16 +5,20 @@ import 'package:yecontinuity/core/constants.dart';
 import 'package:yecontinuity/core/dio_client.dart';
 import 'package:yecontinuity/domain/produts/product.dart';
 
-// ---------------------------------------------------------------------------
-// Modelos
-// ---------------------------------------------------------------------------
-
 class AdBanner {
   final String id;
   final String imageUrl;
   final String? link;
+  final String title;
+  final String subTitle;
 
-  const AdBanner({required this.id, required this.imageUrl, this.link});
+  const AdBanner({
+    required this.id,
+    required this.imageUrl,
+    this.link,
+    required this.title,
+    required this.subTitle,
+  });
 }
 
 class PaginatedProducts {
@@ -57,9 +61,24 @@ class PaginatedProducts {
 /// Por agora devolve imagens de exemplo para veres o slider a funcionar.
 final adsProvider = FutureProvider<List<AdBanner>>((ref) async {
   return const [
-    AdBanner(id: '1', imageUrl: 'https://picsum.photos/id/1011/800/400'),
-    AdBanner(id: '2', imageUrl: 'https://picsum.photos/id/1025/800/400'),
-    AdBanner(id: '3', imageUrl: 'https://picsum.photos/id/1035/800/400'),
+    AdBanner(
+      id: '1',
+      imageUrl: 'https://picsum.photos/id/1035/800/400',
+      title: 'Está um belo dia ☀️',
+      subTitle: 'Se não poderes fazer tudo, faça tudo o que poderes.',
+    ),
+    AdBanner(
+      id: '2',
+      imageUrl: 'https://picsum.photos/id/1011/800/400',
+      title: '21Media Studio',
+      subTitle: 'Audio visual! Não precisa ser uma sonho.',
+    ),
+    AdBanner(
+      id: '3',
+      imageUrl: 'https://picsum.photos/id/1025/800/400',
+      title: 'Três Mundos',
+      subTitle: 'A remodelação não precisa esperar muito',
+    ),
   ];
 });
 
