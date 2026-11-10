@@ -1,10 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:dio/io.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter/foundation.dart';
 import 'package:yecontinuity/core/constants.dart';
-
-import 'dart:io';
 
 import 'package:yecontinuity/ui/feature/auth/providers/auth_provider.dart';
 import 'package:yecontinuity/ui/feature/auth/models/auth_state.dart';

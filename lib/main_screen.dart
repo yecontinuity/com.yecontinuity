@@ -1,13 +1,12 @@
 import 'package:material_ui/material_ui.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class MainScreen extends ConsumerWidget {
+class MainScreen extends StatelessWidget {
   const MainScreen({super.key, required this.child});
 
   final Widget child;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     return Scaffold(
       body: child,
     );
