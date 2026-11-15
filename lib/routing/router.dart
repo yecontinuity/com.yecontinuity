@@ -1,3 +1,5 @@
+import 'package:cupertino_native_better/cupertino_native_better.dart'
+    show CNTabBarRouteObserver;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
@@ -14,6 +16,7 @@ import 'package:yecontinuity/ui/feature/onboardings/welcome_screen.dart';
 import 'package:yecontinuity/ui/feature/products/products_screen.dart';
 import 'package:yecontinuity/ui/feature/products/publish_screen.dart';
 import 'package:yecontinuity/ui/feature/profile/profile_screen.dart';
+import 'package:yecontinuity/ui/feature/settings/settings_screen.dart';
 
 part 'router.g.dart';
 
@@ -28,6 +31,8 @@ final routerProvider = Provider<GoRouter>((ref) {
     navigatorKey: rootNavigatorKey,
     initialLocation: const SplashRoute().location,
     refreshListenable: refresh,
+    // Keeps the native iOS glass tab bar below sheets and dialogs.
+    observers: [CNTabBarRouteObserver()],
     redirect: (context, state) => _redirect(ref, state),
     routes: $appRoutes,
   );
@@ -140,11 +145,26 @@ class RegisterRoute extends GoRouteData with $RegisterRoute {
       const RegisterScreen();
 }
 
+class SettingsRoute extends GoRouteData with $SettingsRoute {
+  const SettingsRoute();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) =>
+      const SettingsScreen();
+}
+
+// Branch order MUST match `appDestinations` in app_shell.dart:
+// Products, Explorer, Add, Chats, Profile.
 @TypedStatefulShellRoute<AppShellRoute>(
   branches: <TypedStatefulShellBranch<StatefulShellBranchData>>[
     TypedStatefulShellBranch<ProductsBranch>(
       routes: <TypedRoute<RouteData>>[
         TypedGoRoute<ProductRoute>(path: '/'),
+      ],
+    ),
+    TypedStatefulShellBranch<ExplorerBranch>(
+      routes: <TypedRoute<RouteData>>[
+        TypedGoRoute<ExplorerRoute>(path: '/explorer'),
       ],
     ),
     TypedStatefulShellBranch<AddBranch>(
@@ -159,7 +179,12 @@ class RegisterRoute extends GoRouteData with $RegisterRoute {
     ),
     TypedStatefulShellBranch<ProfileBranch>(
       routes: <TypedRoute<RouteData>>[
-        TypedGoRoute<ProfileRoute>(path: '/profile'),
+        TypedGoRoute<ProfileRoute>(
+          path: '/profile',
+          routes: <TypedRoute<RouteData>>[
+            TypedGoRoute<SettingsRoute>(path: 'settings'),
+          ],
+        ),
       ],
     ),
   ],
@@ -172,11 +197,18 @@ class AppShellRoute extends StatefulShellRouteData {
     BuildContext context,
     GoRouterState state,
     StatefulNavigationShell navigationShell,
-  ) => AppShell(navigationShell: navigationShell);
+  ) => AppShell(
+    navigationShell: navigationShell,
+    location: state.uri.path,
+  );
 }
 
 class ProductsBranch extends StatefulShellBranchData {
   const ProductsBranch();
+}
+
+class ExplorerBranch extends StatefulShellBranchData {
+  const ExplorerBranch();
 }
 
 class AddBranch extends StatefulShellBranchData {
@@ -194,6 +226,15 @@ class ProfileBranch extends StatefulShellBranchData {
 class ProductRoute extends GoRouteData with $ProductRoute {
   const ProductRoute();
 
+  @override
+  Widget build(BuildContext context, GoRouterState state) =>
+      const ProductsScreen();
+}
+
+class ExplorerRoute extends GoRouteData with $ExplorerRoute {
+  const ExplorerRoute();
+
+  // TODO: replace with the real Explorer screen.
   @override
   Widget build(BuildContext context, GoRouterState state) =>
       const ProductsScreen();
@@ -232,3 +273,5 @@ CustomTransitionPage<void> _fade(GoRouterState state, Widget child) {
     ),
   );
 }
+
+// ATT: quando alterar, roda esse comando: dart run build_runner build --delete-conflicting-outputs

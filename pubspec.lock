@@ -193,14 +193,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.0"
-  cupertino_native:
+  cupertino_native_better:
     dependency: "direct main"
     description:
-      name: cupertino_native
-      sha256: "5f42e85a091797afb86bb30a25fffd7188335de97278fa4bb80c0f564c874e89"
+      name: cupertino_native_better
+      sha256: "9100027c075fe238ee2031a557577ede166a00b6b8ccca770110bcba2f9d32ee"
       url: "https://pub.dev"
     source: hosted
-    version: "0.1.1"
+    version: "1.9.1"
   cupertino_ui:
     dependency: "direct main"
     description:
@@ -414,7 +414,7 @@ packages:
     source: hosted
     version: "3.0.1"
   intl:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: intl
       sha256: "1ca20c894b1717686a2319b8548763d812bc0aabdac580420a44c5178c57a867"
@@ -990,10 +990,10 @@ packages:
     dependency: transitive
     description:
       name: test_api
-      sha256: "2a122cbe059f8b610d3a5415f42e255b6c17b1f21eee1d960f31080237fb4f11"
+      sha256: "0a10344e901e5b2e63819567951cb6a06673ed6b84f40462188ff5a0c41f371f"
       url: "https://pub.dev"
     source: hosted
-    version: "0.7.12"
+    version: "0.7.14"
   typed_data:
     dependency: transitive
     description:

@@ -17,7 +17,7 @@ class ProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onPress,
-      child: Card(
+      child: Expanded(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -35,8 +35,11 @@ class ProductCard extends StatelessWidget {
                   imageUrl: product.thumbnail,
                   fit: BoxFit.cover,
                   width: double.infinity,
-                  progressIndicatorBuilder: (context, url, downloadProgress) =>
-                      ShimmerBox(),
+                  progressIndicatorBuilder: (
+                    context,
+                    url,
+                    downloadProgress,
+                  ) => ShimmerBox(),
                   errorWidget: (context, url, error) => Container(
                     color: Colors.grey.shade200,
                     child: const Icon(

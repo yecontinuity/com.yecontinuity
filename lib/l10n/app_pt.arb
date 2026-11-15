@@ -1,0 +1,49 @@
+{
+  "@@locale": "pt",
+  "appTitle": "YEContinuity",
+  "tabHome": "Início",
+  "tabExplorer": "Explorar",
+  "tabProfile": "Perfil",
+  "tabSettings": "Definições",
+  "tabAdd": "Adicionar",
+  "tabOrders": "Pedidos",
+  "homeTitle": "Início",
+  "homeBody": "Cada separador mantém a sua própria pilha de navegação e posição de scroll.",
+  "openDetails": "Abrir detalhes",
+  "itemsCount": "{count, plural, =0{Sem itens} =1{1 item} other{{count} itens}}",
+  "@itemsCount": {
+    "placeholders": {
+      "count": {
+        "type": "num"
+      }
+    }
+  },
+  "detailsTitle": "Item {id}",
+  "@detailsTitle": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "searchTitle": "Pesquisa",
+  "profileTitle": "Perfil",
+  "settingsTitle": "Definições",
+  "languageTitle": "Idioma",
+  "languageSystem": "Predefinição do sistema",
+  "searchHint": "Pesquisar produtos",
+  "availableItems": "Os artigos disponíveis",
+  "seeMore": "Ver mais",
+  "greeting": "Olá, {name}!",
+  "@greeting": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "appearanceTitle": "Aparência",
+  "themeSystem": "Sistema",
+  "themeLight": "Claro",
+  "themeDark": "Escuro"
+}

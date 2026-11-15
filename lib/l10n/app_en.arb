@@ -1,0 +1,49 @@
+{
+  "@@locale": "en",
+  "appTitle": "YEContinuity",
+  "tabHome": "Home",
+  "tabExplorer": "Explorer",
+  "tabProfile": "Profile",
+  "tabSettings": "Settings",
+  "tabAdd": "Add",
+  "tabOrders": "Orders",
+  "homeTitle": "Home",
+  "homeBody": "Each tab keeps its own navigation stack and scroll position.",
+  "openDetails": "Open details",
+  "itemsCount": "{count, plural, =0{No items} =1{1 item} other{{count} items}}",
+  "@itemsCount": {
+    "placeholders": {
+      "count": {
+        "type": "num"
+      }
+    }
+  },
+  "detailsTitle": "Item {id}",
+  "@detailsTitle": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "searchTitle": "Search",
+  "profileTitle": "Profile",
+  "settingsTitle": "Settings",
+  "languageTitle": "Language",
+  "languageSystem": "System default",
+  "searchHint": "Search products",
+  "availableItems": "Available items",
+  "seeMore": "See more",
+  "greeting": "Hello, {name}!",
+  "@greeting": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "appearanceTitle": "Appearance",
+  "themeSystem": "System",
+  "themeLight": "Light",
+  "themeDark": "Dark"
+}

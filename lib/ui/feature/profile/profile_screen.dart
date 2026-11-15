@@ -1,5 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
+import 'package:yecontinuity/routing/router.dart';
 import 'package:yecontinuity/ui/feature/auth/providers/auth_provider.dart';
 
 class ProfileScreen extends ConsumerWidget {
@@ -27,7 +29,7 @@ class ProfileScreen extends ConsumerWidget {
             ProfileMenu(
               text: "Settings",
               icon: Icons.settings,
-              press: () {},
+              press: () => const SettingsRoute().push(context),
             ),
             ProfileMenu(
               text: "Help Center",
